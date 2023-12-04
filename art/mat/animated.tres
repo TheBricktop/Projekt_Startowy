@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bld6d0xwts7wv"]
+
+[ext_resource type="Shader" uid="uid://dp34ncvdqb4vr" path="res://scenes/PlayGround.tres" id="1_yr0yl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yr0yl")

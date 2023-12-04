@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2o5eqtk30h4y"]
+
+[ext_resource type="Script" path="res://scenes/WorldBonduary.gd" id="1_5ctih"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lptna"]
+size = Vector3(97, 14, 74)
+
+[node name="WorldBonduary" type="Node3D"]
+script = ExtResource("1_5ctih")
+
+[node name="Bonduary" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81912, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bonduary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 0)
+shape = SubResource("BoxShape3D_lptna")
+
+[connection signal="body_entered" from="Bonduary" to="." method="_on_bonduary_body_entered"]

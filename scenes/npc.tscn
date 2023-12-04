@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnajg2aj8a3lg"]
+
+[ext_resource type="PackedScene" uid="uid://bwgsnoo6r5xqq" path="res://art/3d/lowPolyBasemesh_rig_anim.glb" id="1_ff1ny"]
+[ext_resource type="Material" uid="uid://cnl8073qppchd" path="res://scenes/mat/drzwi_area.tres" id="2_era4o"]
+[ext_resource type="Texture2D" uid="uid://egtupri8ab6q" path="res://art/2d/icon_512.png" id="3_70sto"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqt16"]
+size = Vector3(1.44196, 2.66521, 1.72077)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qy1nn"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ogfyx"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_qy1nn")
+nodes/Animation/position = Vector2(120, 80)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_57fdl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jche4"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_ogfyx")
+states/BlendTree/position = Vector2(403, 100)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_57fdl")]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ajp0q"]
+material = ExtResource("2_era4o")
+size = Vector3(0.4, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqjyp"]
+transparency = 1
+albedo_texture = ExtResource("3_70sto")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7p2m2"]
+material = SubResource("StandardMaterial3D_fqjyp")
+
+[node name="NPC" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26214, 0.394463)
+shape = SubResource("BoxShape3D_nqt16")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_jche4")
+anim_player = NodePath("../lowPolyBasemesh_rig_anim/AnimationPlayer")
+active = true
+
+[node name="lowPolyBasemesh_rig_anim" parent="." instance=ExtResource("1_ff1ny")]
+
+[node name="Skeleton3D" parent="lowPolyBasemesh_rig_anim/rig" index="0"]
+bones/0/position = Vector3(-0.00289889, 0.91953, -0.0501332)
+bones/0/rotation = Quaternion(0.125731, 0.0371525, -0.00471195, 0.991357)
+bones/1/rotation = Quaternion(-0.0644987, 0.000130428, 0.00201863, 0.997916)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.0774866, -0.0194713, -0.00206592, 0.996801)
+bones/2/scale = Vector3(0.999953, 1.00009, 0.999947)
+bones/3/rotation = Quaternion(0.00154241, 0.0161219, 0.000750373, 0.999869)
+bones/3/scale = Vector3(1.00006, 0.999881, 1.00007)
+bones/4/rotation = Quaternion(0.445253, -0.0153628, 0.00746848, 0.895242)
+bones/5/rotation = Quaternion(-0.345179, -0.0660495, 0.0243605, 0.935893)
+bones/6/rotation = Quaternion(-0.0905099, -0.09515, 0.0217761, 0.991101)
+bones/7/position = Vector3(-0.00289887, 0.91953, -0.0501332)
+bones/7/rotation = Quaternion(-0.100671, -0.730674, -0.379544, 0.558504)
+bones/8/position = Vector3(-0.0028989, 0.91953, -0.0501332)
+bones/8/rotation = Quaternion(-0.0719618, 0.770452, 0.386018, 0.50221)
+bones/9/position = Vector3(0.0890168, 0.976089, -0.0179222)
+bones/9/rotation = Quaternion(0.999286, 0.0338513, -0.0161934, -0.00434707)
+bones/9/scale = Vector3(0.999656, 1.00069, 0.999656)
+bones/10/rotation = Quaternion(-3.14823e-08, -0.000337528, 2.76732e-08, 1)
+bones/11/rotation = Quaternion(0.0738325, -0.000320332, 2.36051e-05, 0.997271)
+bones/11/scale = Vector3(0.999981, 1.00005, 0.999968)
+bones/12/rotation = Quaternion(1.98777e-08, 0.0203297, 2.81514e-08, 0.999793)
+bones/13/rotation = Quaternion(-0.531705, -0.0491545, 0.0119667, 0.845417)
+bones/13/scale = Vector3(0.999985, 1.00092, 0.999096)
+bones/14/rotation = Quaternion(-0.0351788, 0.954123, -0.297142, -0.0108745)
+bones/14/scale = Vector3(1.00036, 0.999628, 1.00001)
+bones/15/position = Vector3(-0.0889341, 0.976024, -0.00464754)
+bones/15/rotation = Quaternion(0.996927, -0.040119, -0.0600011, 0.0304289)
+bones/15/scale = Vector3(1.00009, 0.999824, 1.00009)
+bones/16/rotation = Quaternion(-5.30865e-08, 3.26044e-05, -1.15855e-08, 1)
+bones/17/rotation = Quaternion(0.0804248, 2.80041e-05, -2.14126e-06, 0.996761)
+bones/17/scale = Vector3(1.00002, 0.999875, 1.0001)
+bones/18/rotation = Quaternion(2.46453e-08, 0.0178627, -1.67967e-08, 0.99984)
+bones/19/rotation = Quaternion(-0.505877, 0.0881345, -0.00650605, 0.858067)
+bones/19/scale = Vector3(1.00001, 0.999812, 1.00018)
+bones/20/rotation = Quaternion(0.0346145, 0.954604, -0.295666, 0.0107353)
+bones/20/scale = Vector3(1.00002, 0.999975, 1)
+bones/21/position = Vector3(0.0217525, 1.46166, 0.0609783)
+bones/21/rotation = Quaternion(-0.625921, -0.329327, -0.330147, 0.625116)
+bones/22/position = Vector3(0.176537, 1.44282, -0.0364999)
+bones/22/rotation = Quaternion(0.00506694, -0.0436948, 0.996407, -0.0723746)
+bones/22/scale = Vector3(1.00768, 0.984823, 1.00768)
+bones/23/rotation = Quaternion(3.70036e-08, 0.0281025, -1.1793e-07, 0.999605)
+bones/24/rotation = Quaternion(0.194013, 0.0280486, -0.00545414, 0.980583)
+bones/24/scale = Vector3(0.999936, 0.996708, 1.0035)
+bones/25/rotation = Quaternion(1.06273e-07, 0.00535333, -1.59097e-08, 0.999986)
+bones/26/rotation = Quaternion(-0.153784, 0.00552368, 0.0366384, 0.98741)
+bones/26/scale = Vector3(0.992558, 1.01307, 0.994596)
+bones/28/rotation = Quaternion(0.558834, -0.00595236, -0.0143125, 0.829135)
+bones/29/rotation = Quaternion(0.592112, 0.0147494, 0.0275902, 0.805248)
+bones/35/rotation = Quaternion(0.542607, -0.000267512, -0.000611814, 0.839987)
+bones/36/rotation = Quaternion(0.568121, 0.000628712, 0.00117168, 0.822944)
+bones/39/rotation = Quaternion(0.534722, -0.0151762, -0.0337444, 0.844218)
+bones/40/rotation = Quaternion(0.55539, 0.0337812, 0.0622092, 0.828572)
+bones/43/rotation = Quaternion(0.556144, 0.0109445, 0.026088, 0.830605)
+bones/44/rotation = Quaternion(0.620775, -0.0317673, -0.0655455, 0.780598)
+bones/46/position = Vector3(-0.0115036, 1.4617, 0.0632581)
+bones/46/rotation = Quaternion(-0.60142, 0.372144, 0.371697, 0.601369)
+bones/47/position = Vector3(-0.17837, 1.4432, -0.0120689)
+bones/47/rotation = Quaternion(0.0426692, -0.0754207, 0.993115, 0.0788319)
+bones/47/scale = Vector3(1.00815, 0.983895, 1.00815)
+bones/48/rotation = Quaternion(-4.59864e-09, -0.0300345, 4.94863e-08, 0.999549)
+bones/49/rotation = Quaternion(0.208068, -0.0298735, 0.00624685, 0.977638)
+bones/49/scale = Vector3(0.999937, 0.996183, 1.00406)
+bones/50/rotation = Quaternion(-5.40908e-08, 0.0211069, 6.09018e-08, 0.999777)
+bones/51/rotation = Quaternion(-0.137536, 0.0210163, -0.048808, 0.98907)
+bones/51/scale = Vector3(0.99227, 1.01429, 0.993678)
+bones/53/rotation = Quaternion(0.1053, -0.00144542, 0.0154318, 0.99432)
+bones/54/rotation = Quaternion(0.14589, -0.000105429, -0.0312862, 0.988806)
+bones/60/rotation = Quaternion(0.0858804, -4.94453e-05, 0.000664457, 0.996305)
+bones/61/rotation = Quaternion(0.116404, -7.81418e-06, -0.0013278, 0.993201)
+bones/64/rotation = Quaternion(0.076932, -0.00239908, 0.0369209, 0.99635)
+bones/65/rotation = Quaternion(0.102521, -0.000701733, -0.0707859, 0.992209)
+bones/68/rotation = Quaternion(0.102235, 0.00255244, -0.0281758, 0.994358)
+bones/69/rotation = Quaternion(0.182761, -0.0026393, 0.0727896, 0.980456)
+bones/71/position = Vector3(0.105301, 1.32899, -0.0514317)
+bones/71/rotation = Quaternion(0.0246473, 0.706758, 0.706625, -0.0238167)
+bones/72/position = Vector3(-0.109829, 1.32928, -0.0367248)
+bones/72/rotation = Quaternion(0.0246473, 0.706758, 0.706625, -0.0238167)
+
+[node name="Head" type="BoneAttachment3D" parent="lowPolyBasemesh_rig_anim/rig/Skeleton3D" index="1"]
+transform = Transform3D(0.955789, 0.000828207, -0.294096, -0.0011125, 0.99997, -0.000800997, 0.294097, 0.00109449, 0.955793, 0.00186974, 1.5866, 0.0329527)
+bone_name = "DEF-spine.006"
+bone_idx = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lowPolyBasemesh_rig_anim/rig/Skeleton3D/Head"]
+transform = Transform3D(0.996605, 0.00527982, -0.0823078, -0.00575402, 0.999918, -0.00535038, 0.0822641, 0.0058155, 0.996586, 0.00173361, 0.0866499, -0.00145751)
+mesh = SubResource("BoxMesh_ajp0q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="lowPolyBasemesh_rig_anim/rig/Skeleton3D/Head/MeshInstance3D"]
+transform = Transform3D(0.259997, 0, 0, 0, 0.260013, 0, 0, 0, 0.260002, 0.0111259, 0.00424945, 0.15605)
+mesh = SubResource("QuadMesh_7p2m2")
+skeleton = NodePath("../..")
+
+[editable path="lowPolyBasemesh_rig_anim"]

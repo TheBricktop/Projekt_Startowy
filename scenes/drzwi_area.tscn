@@ -1,0 +1,112 @@
+[gd_scene load_steps=12 format=3 uid="uid://jn23g2de5dbg"]
+
+[ext_resource type="Script" path="res://script/Drzwi_Rigidbody.gd" id="1_fju7u"]
+[ext_resource type="Material" uid="uid://cnl8073qppchd" path="res://art/mat/drzwi_area.tres" id="2_jd1bl"]
+[ext_resource type="AudioStream" uid="uid://dhmmpobtmku73" path="res://addons/kenney impact sounds/impact_wood_light_004.ogg" id="3_h5fvw"]
+[ext_resource type="AudioStream" uid="uid://daeqewtxe6yc6" path="res://addons/kenney impact sounds/impact_soft_medium_001.ogg" id="3_lbtrn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ng1nc"]
+size = Vector3(2.68297, 2.49697, 2.53826)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kt8qc"]
+size = Vector3(1.03, 2.004, 0.077)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kcjtm"]
+material = ExtResource("2_jd1bl")
+size = Vector3(1.03, 2.004, 0.077)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ty01n"]
+size = Vector3(0.16, 0.05, 0.205)
+
+[sub_resource type="Animation" id="Animation_ybpt0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iqr7t"]
+resource_name = "otwieranie"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.090505, 0), Vector3(0, -2.46889, 0), Vector3(0, -2.36981, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_lbtrn")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_h5fvw")
+}],
+"times": PackedFloat32Array(0, 0.00818796)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7o7oa"]
+_data = {
+"RESET": SubResource("Animation_ybpt0"),
+"otwieranie": SubResource("Animation_iqr7t")
+}
+
+[node name="Drzwi_area" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.267859, 0, 2.01629)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267859, 0, -2.01629)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254913, 0.998739, 0.7)
+shape = SubResource("BoxShape3D_ng1nc")
+
+[node name="Drzwi_Rigidbody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233685, 0.10934, 0.0201157)
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_fju7u")
+player_name = "PlayerTemplate"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drzwi_Rigidbody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519574, 0.992691, -0.0345936)
+shape = SubResource("BoxShape3D_kt8qc")
+
+[node name="Drzwi_mesh" type="MeshInstance3D" parent="Drzwi_Rigidbody/CollisionShape3D"]
+mesh = SubResource("BoxMesh_kcjtm")
+skeleton = NodePath("../../../..")
+
+[node name="klamka_mesh" type="MeshInstance3D" parent="Drzwi_Rigidbody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89995, 0.79, -0.0350001)
+mesh = SubResource("BoxMesh_ty01n")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drzwi_Rigidbody"]
+libraries = {
+"": SubResource("AnimationLibrary_7o7oa")
+}
+
+[connection signal="body_entered" from="." to="Drzwi_Rigidbody" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="." to="Drzwi_Rigidbody" method="_on_area_3d_body_exited"]
