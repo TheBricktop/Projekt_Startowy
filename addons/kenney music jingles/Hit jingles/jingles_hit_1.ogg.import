@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgdibbi5x01oy"
+path="res://.godot/imported/jingles_hit_1.ogg-4a9584a17fe4af5efc5340c2d06a1523.oggvorbisstr"
+
+[deps]
+
+source_file="res://addons/kenney music jingles/Hit jingles/jingles_hit_1.ogg"
+dest_files=["res://.godot/imported/jingles_hit_1.ogg-4a9584a17fe4af5efc5340c2d06a1523.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
