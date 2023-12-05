@@ -108,5 +108,5 @@ libraries = {
 "": SubResource("AnimationLibrary_7o7oa")
 }
 
-[connection signal="body_entered" from="." to="Drzwi_Rigidbody" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="." to="Drzwi_Rigidbody" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="." to="Drzwi_Rigidbody" method="_on_drzwi_area_body_entered"]
+[connection signal="body_exited" from="." to="Drzwi_Rigidbody" method="_on_drzwi_area_body_exited"]

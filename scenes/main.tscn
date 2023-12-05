@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1mb3reh2sna2"]
+[gd_scene load_steps=10 format=3 uid="uid://c1mb3reh2sna2"]
 
 [ext_resource type="Texture2D" uid="uid://cf8hv6q2io2h5" path="res://art/2d/256_Brick 02.png" id="1_rdtxt"]
 [ext_resource type="PackedScene" uid="uid://dqngcp7qr5dhr" path="res://scenes/player_template.tscn" id="2_yn66j"]
+[ext_resource type="PackedScene" uid="uid://jn23g2de5dbg" path="res://scenes/drzwi_area.tscn" id="3_e0d1d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l55pp"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,3 +86,6 @@ light_color = Color(0, 0.466667, 0.27451, 1)
 light_energy = 16.0
 light_volumetric_fog_energy = 4.397
 omni_range = 12.4707
+
+[node name="Drzwi_area" parent="." instance=ExtResource("3_e0d1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80147, -0.00198853, -16.2887)

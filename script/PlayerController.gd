@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var jump_force = 9
 @export var walk_speed = 3
 @export var run_speed = 8
+@export var lights : Array[Light3D]
 
 # Condition States
 var is_walking = bool(); var is_running = bool()
