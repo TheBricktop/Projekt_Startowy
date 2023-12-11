@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerController
 
 @export var player_mesh : Node3D
 # Gamplay mechanics and Inspector tweakables
@@ -6,7 +7,7 @@ extends CharacterBody3D
 @export var jump_force = 9
 @export var walk_speed = 3
 @export var run_speed = 8
-@export var lights : Array[Light3D]
+@export var push_force = 80
 
 # Condition States
 var is_walking = bool(); var is_running = bool()
@@ -81,7 +82,13 @@ func _physics_process(delta):
 	$AnimationTree["parameters/conditions/isWalking"] = is_walking
 	$AnimationTree["parameters/conditions/notWalking"] = ! is_walking
 	move_and_slide()
-
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			var r : RigidBody3D = c.get_collider()
+			r.apply_central_impulse(-c.get_normal(i)*push_force)
+			
 func _foot_step()-> void :
 	if is_on_floor():
 		$AudioStreamPlayer3D.play()
