@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfi4iogaflc6k"]
+
+[ext_resource type="Script" path="res://script/Key.gd" id="1_uxgue"]
+[ext_resource type="PackedScene" uid="uid://bokwmibfj0pmk" path="res://art/3d/key.blend" id="2_874cn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvcf8"]
+albedo_color = Color(0, 1, 1, 1)
+metallic = 1.0
+roughness = 0.33
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.14
+backlight = Color(0.690196, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jpknm"]
+radius = 0.8
+
+[node name="Key_Item" type="Node3D"]
+transform = Transform3D(0.639815, -0.766774, 0.0519104, 0, -0.0675451, -0.997716, 0.768529, 0.638353, -0.0432164, 8.55386, 0.626285, -14.576)
+script = ExtResource("1_uxgue")
+
+[node name="key" parent="." instance=ExtResource("2_874cn")]
+
+[node name="Plane" parent="key" index="0"]
+material_override = SubResource("StandardMaterial3D_xvcf8")
+
+[node name="PlayerDetector" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
+shape = SubResource("SphereShape3D_jpknm")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+
+[editable path="key"]

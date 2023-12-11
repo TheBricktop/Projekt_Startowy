@@ -1938,7 +1938,7 @@ bones/72/position = Vector3(-0.0954375, 1.31932, -0.0361135)
 bones/72/rotation = Quaternion(0.0100464, 0.703562, 0.709784, -0.033268)
 
 [node name="HandBone" type="BoneAttachment3D" parent="lowPolyBasemesh_rig_anim/rig/Skeleton3D" index="0"]
-transform = Transform3D(0.15348, 0.0570368, 0.987664, 0.397913, -0.90605, -0.00966191, 0.904006, 0.418993, -0.165895, -0.249272, 0.897382, 0.0656057)
+transform = Transform3D(0.153479, 0.0570351, 0.987661, 0.397911, -0.90605, -0.00966202, 0.904001, 0.41899, -0.165895, -0.249273, 0.897384, 0.0656044)
 bone_name = "DEF-palm.01.R"
 bone_idx = 58
 

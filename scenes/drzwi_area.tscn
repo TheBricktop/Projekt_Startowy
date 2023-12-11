@@ -85,6 +85,8 @@ shape = SubResource("BoxShape3D_ng1nc")
 
 [node name="Drzwi_Rigidbody" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233685, 0.10934, 0.0201157)
+collision_layer = 3
+collision_mask = 3
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_fju7u")

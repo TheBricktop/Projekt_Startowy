@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgij1hiqy8p67"]
+
+[ext_resource type="Script" path="res://scenes/Lock.gd" id="1_ppnx1"]
+[ext_resource type="Script" path="res://scenes/Door_unlock.gd" id="2_glxrw"]
+[ext_resource type="Texture2D" uid="uid://dot0ex1d0mjvj" path="res://art/2d/256_Wood Planks 01.png" id="3_5pd5a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2e6rv"]
+size = Vector3(1, 1, 1.94209)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dka6n"]
+albedo_texture = ExtResource("3_5pd5a")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e4uw7"]
+size = Vector3(1, 1.7, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_golnm"]
+size = Vector3(1, 1.7, 0.1)
+
+[node name="PhysicalDoor" type="HingeJoint3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.29344, 0, -17.0321)
+node_b = NodePath("RigidBody3D")
+angular_limit/enable = true
+angular_limit/softness = 0.09
+
+[node name="Lock" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
+collision_layer = 0
+script = ExtResource("1_ppnx1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496536, 0)
+shape = SubResource("BoxShape3D_2e6rv")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 0, -1)
+collision_layer = 2
+mass = 500.0
+freeze = true
+script = ExtResource("2_glxrw")
+
+[node name="CubeMesh" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133146, 0)
+material_override = SubResource("StandardMaterial3D_dka6n")
+mesh = SubResource("BoxMesh_e4uw7")
+
+[node name="CubeShape" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136844, 0)
+shape = SubResource("BoxShape3D_golnm")
+
+[connection signal="body_entered" from="Lock" to="Lock" method="_on_body_entered"]
+[connection signal="unlock" from="Lock" to="RigidBody3D" method="_on_lock_unlock"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://ndfmobtkpoq6"]
+
+[ext_resource type="PackedScene" uid="uid://bhn4r7hc8rsf4" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall.gltf" id="1_ammrc"]
+
+[node name="Walls_main" type="Node3D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(0.540974, 0, 0.841039, 0, 1, 0, -0.841039, 0, 0.540974, -6.96233, -0.00597108, -14.6548)
+
+[node name="Wall2" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.237974, 0, 0.971272, 0, 1, 0, -0.971272, 0, -0.237974, -7.59429, -0.00597108, -11.1709)
+
+[node name="Wall3" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.966761, 0, 0.255682, 0, 1, 0, -0.255682, 0, -0.966761, -5.36013, -0.00597108, -8.84448)
+
+[node name="Wall4" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.909352, 0, -0.416027, 0, 1, 0, 0.416027, 0, -0.909352, -1.8845, -0.00597108, -9.17489)
+
+[node name="Wall6" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(0.0404631, 0, -0.999181, 0, 1, 0, 0.999181, 0, 0.0404631, -0.883892, -0.00597108, -11.1821)
+
+[node name="Wall7" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.268264, 0, -0.963345, 0, 1, 0, 0.963345, 0, -0.268264, -2.6594, -0.00597108, -17.8984)
+
+[node name="Wall8" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.107913, 0, -0.99416, 0, 1, 0, 0.99416, 0, -0.107913, -5.73541, -0.00597108, -18.3212)
+
+[node name="Wall9" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.989861, 0, -0.142042, 0, 1, 0, 0.142042, 0, -0.989861, -2.16215, -0.00597108, -22.4474)
+
+[node name="Wall15" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.833838, 0, 0.55201, 0, 1, 0, -0.55201, 0, -0.833838, -5.67858, -0.0059706, -23.2658)
+
+[node name="Wall17" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.116983, 0, 0.993134, 0, 1, 0, -0.993134, 0, -0.116983, -9.32778, -0.0059706, -22.9038)
+
+[node name="Wall16" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.941846, 0, 0.336043, 0, 1, 0, -0.336043, 0, -0.941846, -7.37447, -0.00597155, -20.6207)
+
+[node name="Wall10" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.989861, 0, -0.142042, 0, 1, 0, 0.142042, 0, -0.989861, -0.312245, -0.00597108, -20.2022)
+
+[node name="Wall11" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.989861, 0, -0.142042, 0, 1, 0, 0.142042, 0, -0.989861, 3.26166, -0.00597108, -20.764)
+
+[node name="Wall12" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.348474, 0, -0.937318, 0, 1, 0, 0.937318, 0, -0.348474, 5.80223, -0.00597108, -22.6691)
+
+[node name="Wall13" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.999532, 0, 0.0305909, 0, 1, 0, -0.0305909, 0, -0.999532, 4.50099, -0.00597108, -24.3281)
+
+[node name="Wall14" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(-0.93403, 0, -0.357194, 0, 1, 0, 0.357194, 0, -0.93403, 0.765731, -0.00597108, -23.4877)
+
+[node name="Wall5" parent="." instance=ExtResource("1_ammrc")]
+transform = Transform3D(0.519191, 0, -0.854658, 0, 1, 0, 0.854658, 0, 0.519191, -2.0119, -0.00597108, -14.2905)
